@@ -17,6 +17,9 @@ pub enum PBXTargetPlatform {
     /// macOS Platform
     #[serde(rename = "macOS")]
     MacOS,
+    /// visionOS Platform
+    #[serde(rename = "xrOS")]
+    XrOS,
     /// Unknown or not support platform
     Unknown,
 }
@@ -35,6 +38,7 @@ impl PBXTargetPlatform {
             "macosx" => Self::MacOS,
             "appletvos" => Self::TvOS,
             "watchos" => Self::WatchOS,
+            "xros" => Self::XrOS,
             _ => Self::Unknown,
         }
     }
@@ -61,6 +65,7 @@ impl FromStr for PBXTargetPlatform {
             "watchOS" => Ok(Self::WatchOS),
             "tvOS" => Ok(Self::TvOS),
             "macOS" => Ok(Self::MacOS),
+            "xrOS" => Ok(Self::XrOS),
             _ => Ok(Self::Unknown),
         }
     }
@@ -73,6 +78,7 @@ impl ToString for PBXTargetPlatform {
             Self::WatchOS => "watchOS",
             Self::TvOS => "tvOS",
             Self::MacOS => "macOS",
+            Self::XrOS => "xrOS",
             _ => "",
         }
         .into()
